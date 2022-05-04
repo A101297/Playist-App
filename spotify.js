@@ -1,4 +1,4 @@
-const clientID = ****
+const clientID = "API";
 const redirectURI = "http://localhost:3000/";
 
 let accessToken;
@@ -29,12 +29,12 @@ const Spotify = {
         }
     },
     search(term) {
-        let accessToken = Spotify.getAccessToken();
-        let headers = {Authorization: `Bearer ${accessToken}`}
+        const accessToken = Spotify.getAccessToken();
+        const headers = {'Authorization': `Bearer ${accessToken}`}
         // console.log(headers)
                 
         return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
-            headers: { Authorization: headers }
+            headers: headers
         }).then(response => {
             // console.log("response search " + response);
             return response.json()
@@ -58,8 +58,8 @@ const Spotify = {
             return;
         }
 
-        let accessToken = Spotify.getAccessToken();
-        let headers = {Authorization: `Bearer ${accessToken}`}
+        const accessToken = Spotify.getAccessToken();
+        const headers = {Authorization: `Bearer ${accessToken}`}
         let userId;
 
         return fetch('https://api.spotify.com/v1/me', { 
